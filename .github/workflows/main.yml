@@ -4,8 +4,7 @@ on:
   pull_request_target:
     types:
       - closed
-    branches:    
-      - develop
+    branches:
       - release
 
 env:
@@ -15,7 +14,6 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-    
   release:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
@@ -59,24 +57,13 @@ jobs:
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: ghcr.io/${{ steps.imagename.outputs.lowercase }}:${{ steps.version-bump.outputs.new_tag }}
-          labels: ${{ steps.meta.outputs.labels }}
-          secrets: |
-            "github_token=${{ secrets.GITHUB_TOKEN }}"
             
       - name: Build and push Docker image
-        if: github.ref == 'refs/heads/release'
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: ./HomeLab/
           push: true
-          tags: ghcr.io/${{ steps.imagename.outputs.lowercase }}:latest
+          tags: ghcr.io/${{ steps.imagename.outputs.lowercase }}:latest, ghcr.io/${{ steps.imagename.outputs.lowercase }}:${{ steps.version-bump.outputs.new_tag }}
           labels: ${{ steps.meta.outputs.labels }}
           secrets: |
             "github_token=${{ secrets.GITHUB_TOKEN }}"
