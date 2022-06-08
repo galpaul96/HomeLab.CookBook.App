@@ -62,7 +62,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: ./HomeLab.CookBook/
+          context: .
           push: true
           tags: ghcr.io/${{ steps.imagename.outputs.lowercase }}:latest, ghcr.io/${{ steps.imagename.outputs.lowercase }}:${{ steps.version-bump.outputs.new_tag }}
           labels: ${{ steps.meta.outputs.labels }}
