@@ -13,8 +13,7 @@ env:
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
 
-jobs:
-    
+jobs: 
   release:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
