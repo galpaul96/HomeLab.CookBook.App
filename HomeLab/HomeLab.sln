@@ -3,13 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32516.85
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeLab.App", "HomeLab.App\HomeLab.App.csproj", "{BDCA07E6-8EF3-476D-86EF-5BF679490BE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeLab.App", "HomeLab.App\HomeLab.App.csproj", "{BDCA07E6-8EF3-476D-86EF-5BF679490BE2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6296684F-462F-45D7-8C82-EA26F2F3FD3B}"
 	ProjectSection(SolutionItems) = preProject
-		RunApp - Copy.bat = RunApp - Copy.bat
 		RunApp.bat = RunApp.bat
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeLab.Domain", "HomeLab.Domain\HomeLab.Domain.csproj", "{C1A160BD-1561-475B-B648-F3EAC1E83242}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeLab.Ecosystem", "HomeLab.Ecosystem\HomeLab.Ecosystem.csproj", "{E5FF9DEA-5B55-458C-849E-284B6D7509DD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeLab.EF", "HomeLab.EF\HomeLab.EF.csproj", "{CD915BC8-D2D5-488D-972A-13137A1C1615}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeLab.Services", "HomeLab.Services\HomeLab.Services.csproj", "{0DCEFC38-2B2B-45B0-BCCD-940D324BC315}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{58311BCA-0003-4DAB-B9CD-3CF07ECA2748}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeLab.Services.Tests", "Tests\HomeLab.Services.Tests\HomeLab.Services.Tests.csproj", "{47D274FD-E0F1-4AF2-81CD-E143D31CFA96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +32,32 @@ Global
 		{BDCA07E6-8EF3-476D-86EF-5BF679490BE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDCA07E6-8EF3-476D-86EF-5BF679490BE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDCA07E6-8EF3-476D-86EF-5BF679490BE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1A160BD-1561-475B-B648-F3EAC1E83242}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1A160BD-1561-475B-B648-F3EAC1E83242}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1A160BD-1561-475B-B648-F3EAC1E83242}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1A160BD-1561-475B-B648-F3EAC1E83242}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5FF9DEA-5B55-458C-849E-284B6D7509DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5FF9DEA-5B55-458C-849E-284B6D7509DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5FF9DEA-5B55-458C-849E-284B6D7509DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5FF9DEA-5B55-458C-849E-284B6D7509DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD915BC8-D2D5-488D-972A-13137A1C1615}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD915BC8-D2D5-488D-972A-13137A1C1615}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD915BC8-D2D5-488D-972A-13137A1C1615}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD915BC8-D2D5-488D-972A-13137A1C1615}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DCEFC38-2B2B-45B0-BCCD-940D324BC315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DCEFC38-2B2B-45B0-BCCD-940D324BC315}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DCEFC38-2B2B-45B0-BCCD-940D324BC315}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DCEFC38-2B2B-45B0-BCCD-940D324BC315}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47D274FD-E0F1-4AF2-81CD-E143D31CFA96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47D274FD-E0F1-4AF2-81CD-E143D31CFA96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47D274FD-E0F1-4AF2-81CD-E143D31CFA96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47D274FD-E0F1-4AF2-81CD-E143D31CFA96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{47D274FD-E0F1-4AF2-81CD-E143D31CFA96} = {58311BCA-0003-4DAB-B9CD-3CF07ECA2748}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0767A3AD-75F6-4951-8C40-18F1FBD1C3FE}

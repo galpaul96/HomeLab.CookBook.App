@@ -1,40 +1,29 @@
+using HomeLab.App;
 using HomeLab.App.Data;
+using HomeLab.App.Infra.Middlewares;
 using HomeLab.App.Models;
+using HomeLab.Domain.Settings;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-options.UseInMemoryDatabase("Users"));
-//options.UseSqlServer(connectionString));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Host.UseSerilog((ctx, lc) => lc
+    .WriteTo.Console()
+    );
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
-
-builder.Services.AddIdentityServer(options =>
-{
-    options.IssuerUri = "https://localhost:44459";
-})
-    .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
-
-builder.Services.AddAuthentication()
-    .AddIdentityServerJwt();
-
-builder.Services.AddControllersWithViews();
-builder.Services.AddRazorPages();
+builder.Services.ConfigureGeneralServices(builder.Configuration);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || builder.Configuration.GetValue<bool>("SwaggerEnabled"))
 {
     app.UseMigrationsEndPoint();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 else
 {
@@ -50,11 +39,14 @@ app.UseAuthentication();
 app.UseIdentityServer();
 app.UseAuthorization();
 
+app.UseMiddleware<GlobalExceptionHandler>();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
+
 app.MapRazorPages();
 
-app.MapFallbackToFile("index.html"); ;
+//app.MapFallbackToFile("index.html"); ;
 
 app.Run();
