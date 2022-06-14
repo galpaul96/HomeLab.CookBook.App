@@ -1,17 +1,8 @@
 import { useState, memo } from 'react';
 import { cardStyle, imageSectionStyle, titleStyle, descriptionStyle, detailsStyle, detailContainerStyle, paragraphStyle, imageStyle, headerDetailStyle, bodyDetailStyle } from './RecipeCardStyle.module.js';
 
-const exempleRecipe = {
-    title: "Shaorma",
-    description: "Sharoma rapida, gustoasa si sanatoasa. Usor de facut, usor de savurat. Mai multa descriere bing bing bing bing bing bing bing bing bing bing bing bing ",
-    preparationTime: "30 min",
-    dificulty: "Basic",
-    numberOfIngredients: 10,
-    url: 'https://t3.ftcdn.net/jpg/01/32/05/84/360_F_132058496_aE136Gt4ZP7MC7pzMgyxImJsp4GVmgID.jpg',
-}
-
-function RecipeCard() {
-    const [recipe, setRecipe] = useState(exempleRecipe)
+function RecipeCard(props) {
+    const [recipe, setRecipe] = useState(props.recipe);
 
     return (
         <div style={cardStyle}
